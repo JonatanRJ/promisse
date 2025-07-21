@@ -8,4 +8,18 @@ export default defineConfig({
     tailwindcss(),
     react(),
   ],
+  base: '/promisse/',
+  build: {
+    outDir: '../dist',
+    assetsDir: 'assets',
+    sourcemap: true,
+    emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        assetFileNames: `assets/[name].[hash][extname]`,
+        entryFileNames: `assets/[name].[hash].js`,
+        chunkFileNames: `assets/[name].[hash].js`,
+      }
+    }
+  }
 })

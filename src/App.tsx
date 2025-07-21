@@ -3,6 +3,12 @@ import { useState } from 'react';
 function App() {
   const [isRolled, setIsRolled] = useState(true);
   
+    // Helper function to get correct asset paths
+  const getAssetPath = (filename: string) => {
+    // Use import.meta.env.BASE_URL for Vite's base URL
+    return `${import.meta.env.BASE_URL || '/'}${filename}`;
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black flex flex-col items-center justify-center p-4 font-serif overflow-hidden">
       <div className="w-full flex flex-col items-center">
@@ -15,7 +21,7 @@ function App() {
           {isRolled ? (
             <div className="transition-all duration-1000 ease-in-out ">
               <img 
-                src="/background-pergamino-rollo.png" 
+                src={getAssetPath('background-pergamino-rollo.png')} 
                 alt="Pergamino enrollado"
                 className="mx-auto max-h-[500px] "
               />
@@ -24,7 +30,7 @@ function App() {
             <div 
               className="transition-all duration-1000 ease-in-out w-[90vw] max-w-5xl"
               style={{
-                backgroundImage: "url('/background-pergamino.png')",
+                backgroundImage: `url(${getAssetPath('background-pergamino.png')})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
